@@ -1,0 +1,9 @@
+[project]
+name = "slatevault-app"
+description = "slateVault application architecture and implementation details"
+tags = [
+    "architecture",
+    "documentation",
+    "core",
+]
+ai_context_files = []

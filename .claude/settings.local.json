@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__slatevault__search_documents"
+    ]
+  }
+}

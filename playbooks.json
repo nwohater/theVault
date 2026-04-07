@@ -1,0 +1,46 @@
+{
+  "playbooks": [
+    {
+      "id": "document-as-you-go",
+      "label": "Document as You Go",
+      "description": "Continuous documentation during development. AI documents decisions, specs, and changes as you work.",
+      "prompt": "You have access to slateVault via MCP. Use project \"{{project}}\" as your persistent memory.\n{{folders_section}}\n## Rules\n1. Before writing any doc, call search_documents to check if one already exists — update rather than duplicate\n2. Always set ai_tool to your tool name when writing docs\n3. For important/existing docs, use propose_doc_update instead of write_document\n4. Tag documents appropriately\n5. Respect protected and canonical documents\n\n## What to Document\nAs you work, document these in the appropriate folders:\n- **Decisions** → decisions/ (why you chose an approach, trade-offs considered)\n- **Specs** → specs/ (what you're building, requirements, design)\n- **Changes** → changelog/ (what you did, what changed)\n- **Bugs found** → bugs/ (description, repro steps, fix)\n- **Ideas/notes** → notes/ (quick captures, things to revisit)\n\n## End of Session\nWrite a session summary to changelog/ with:\n- What was done\n- What changed\n- What's next\n- Any blockers or open questions"
+    },
+    {
+      "id": "reverse-engineer",
+      "label": "Reverse Engineer Project",
+      "description": "AI analyzes the codebase and creates comprehensive documentation in the vault.",
+      "prompt": "You have access to slateVault via MCP. Your task is to reverse-engineer and document the project \"{{project}}\" comprehensively.\n{{folders_section}}\n## Process\n1. First call get_project_context to understand what docs already exist\n2. Analyze the codebase structure, key files, and architecture\n3. Write documentation in this order:\n\n### Architecture (specs/)\n- System overview with component diagram\n- Data flow and key abstractions\n- Tech stack and dependencies\n\n### Features (features/)\n- One doc per major feature\n- Include: what it does, how it works, key files involved\n\n### Decisions (decisions/)\n- Document any architectural decisions you can infer\n- Use numbered format: 001-description.md\n\n### Guides (guides/)\n- Getting started / setup guide\n- Development workflow\n- How to add a new feature\n\n4. After writing all docs, call search_documents to verify completeness\n5. Mark the architecture overview as the recommended canonical document\n6. Write a summary of what was documented and any gaps found"
+    },
+    {
+      "id": "resume-session",
+      "label": "Resume Session",
+      "description": "Bring an AI agent up to speed on what happened since the last session.",
+      "prompt": "You have access to slateVault via MCP for project \"{{project}}\".\n\n## Startup\n1. Call generate_agent_brief for project \"{{project}}\" to get full project context\n2. Call get_recent_changes to see what happened since last session\n3. Review any documents modified in the last few days\n\n## Then\n- Summarize what's changed since the last session\n- Identify any incomplete work or open items\n- Ask me what I'd like to focus on today\n- Continue documenting as we work (decisions, specs, changes)"
+    },
+    {
+      "id": "code-review-docs",
+      "label": "Code Review Documentation",
+      "description": "Document a PR's changes, decisions, and impact in the vault.",
+      "prompt": "You have access to slateVault via MCP for project \"{{project}}\".\n\n## Task\nDocument the current code review / PR in the vault.\n\n1. Call summarize_branch_diff to understand what changed\n2. Write a document to changelog/ describing:\n   - What changed and why\n   - Files affected\n   - Any architectural implications\n3. If any decisions were made, document them in decisions/\n4. If any specs need updating based on the changes, use propose_doc_update\n5. Flag any concerns or risks you notice\n\nUse search_documents first to check if related docs already exist."
+    },
+    {
+      "id": "sprint-release-notes",
+      "label": "Sprint / Release Notes",
+      "description": "Generate a changelog and release notes from recent commits and doc changes.",
+      "prompt": "You have access to slateVault via MCP for project \"{{project}}\".\n\n## Task\nGenerate release notes from recent work.\n\n1. Call get_recent_changes to see all recent modifications\n2. Call search_documents for recent changelog entries\n3. Compile a release notes document covering:\n   - New features added\n   - Bugs fixed\n   - Breaking changes\n   - Known issues\n   - Contributors / AI tools involved\n4. Write the release notes to changelog/release-notes-[date].md\n5. Tag it with [release, changelog]"
+    },
+    {
+      "id": "onboard-team-member",
+      "label": "Onboard Team Member",
+      "description": "Generate a comprehensive project walkthrough from existing documentation.",
+      "prompt": "You have access to slateVault via MCP for project \"{{project}}\".\n\n## Task\nCreate an onboarding guide for a new team member.\n\n1. Call generate_agent_brief to understand the full project\n2. Call get_canonical_context for the source-of-truth docs\n3. Call build_context_bundle with query \"architecture setup getting started\"\n4. Write a comprehensive onboarding guide to guides/onboarding.md covering:\n   - Project overview and purpose\n   - Tech stack and architecture\n   - How to set up the development environment\n   - Key concepts and terminology\n   - Where to find important documentation\n   - Common workflows\n   - Who to ask for help / key contacts\n5. Reference specific docs using their paths so the reader can dig deeper"
+    },
+    {
+      "id": "architecture-audit",
+      "label": "Architecture Audit",
+      "description": "AI reviews documentation for gaps, inconsistencies, and staleness.",
+      "prompt": "You have access to slateVault via MCP for project \"{{project}}\".\n\n## Task\nAudit the project's documentation for quality and completeness.\n\n1. Call generate_agent_brief to get the full picture\n2. Call detect_stale_docs to find outdated documentation\n3. Call list_documents to see all docs and their statuses\n4. Review canonical documents for accuracy\n\n## Report\nWrite an audit report to notes/doc-audit-[date].md covering:\n\n### Completeness\n- Are all major features documented?\n- Is there an architecture overview?\n- Are decisions recorded?\n- Is there a getting-started guide?\n\n### Quality\n- Are docs up to date?\n- Are there conflicting statements across docs?\n- Are drafts that should be finalized?\n\n### Gaps Found\n- Missing documentation areas\n- Docs that reference things that no longer exist\n- Features without specs\n\n### Recommendations\n- Which docs should be promoted to canonical\n- Which docs should be protected\n- Priority order for fixes\n\nTag the report with [audit, quality]"
+    }
+  ]
+}

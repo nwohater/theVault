@@ -1,0 +1,70 @@
+{
+  "default": "software-dev",
+  "templates": {
+    "agile": {
+      "label": "Agile Development",
+      "folders": [
+        "backlog",
+        "sprints",
+        "retrospectives",
+        "ceremonies",
+        "epics",
+        "definitions"
+      ],
+      "files": {
+        "epics/_about.md": "Epic documentation — high-level features broken into user stories with acceptance criteria.",
+        "sprints/_about.md": "Sprint documentation — goals, plans, and commitments for each sprint.",
+        "ceremonies/_about.md": "Ceremony guides — standup, planning, review, and retro formats and agendas.",
+        "definitions/_definition-of-done.md": "The team's Definition of Done (DoD) — criteria that must be met before work is considered complete.\n\n## Definition of Done\n\n- [ ] Code reviewed and approved\n- [ ] Unit tests written and passing\n- [ ] Integration tests passing\n- [ ] Documentation updated\n- [ ] No known defects\n- [ ] Deployed to staging and verified",
+        "definitions/_definition-of-ready.md": "The team's Definition of Ready (DoR) — criteria a story must meet before it enters a sprint.\n\n## Definition of Ready\n\n- [ ] User story follows INVEST criteria\n- [ ] Acceptance criteria defined\n- [ ] Dependencies identified\n- [ ] Estimated by the team\n- [ ] Small enough to complete in one sprint",
+        "retrospectives/_about.md": "Sprint retrospectives — what went well, what to improve, action items.",
+        "backlog/_about.md": "Product backlog — user stories, epics, and prioritized work items."
+      }
+    },
+    "minimal": {
+      "label": "Minimal",
+      "folders": [],
+      "files": {}
+    },
+    "vibe-coding": {
+      "label": "Vibe Coding",
+      "folders": [
+        "prd",
+        "todo",
+        "prompts",
+        "context",
+        "changelog",
+        "bugs",
+        "ideas"
+      ],
+      "files": {
+        "prompts/_about.md": "AI prompts and instructions — system prompts, CLAUDE.md files, and reusable prompt templates for your AI coding sessions.",
+        "changelog/_about.md": "Session logs and changelogs — what was built, changed, or fixed in each coding session.",
+        "bugs/_about.md": "Bug reports and issues — describe the problem, steps to reproduce, expected vs actual behavior.",
+        "ideas/_about.md": "Feature ideas and brainstorms — capture ideas before they're lost, refine them into PRDs later.",
+        "prd/_about.md": "Product Requirements Documents — describe what you want to build, the problem it solves, and success criteria.",
+        "todo/_about.md": "Task lists and work tracking — what needs to be done, what's in progress, what's blocked.",
+        "context/_about.md": "Project context files — architecture notes, tech stack decisions, and background info to feed AI tools."
+      }
+    },
+    "software-dev": {
+      "label": "Software Development",
+      "folders": [
+        "specs",
+        "features",
+        "decisions",
+        "guides",
+        "runbooks",
+        "notes"
+      ],
+      "files": {
+        "specs/_about.md": "Technical specifications and design documents for this project.",
+        "runbooks/_about.md": "Operational procedures for deployments, incidents, and maintenance.",
+        "notes/_about.md": "Scratch space for meeting notes, brainstorms, and quick captures.",
+        "features/_about.md": "Feature documentation — requirements, acceptance criteria, and implementation notes.",
+        "decisions/_about.md": "Architecture Decision Records (ADRs). Use numbered prefixes: `001-use-postgres.md`.",
+        "guides/_about.md": "How-to guides, tutorials, and walkthroughs for the team."
+      }
+    }
+  }
+}

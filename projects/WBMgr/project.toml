@@ -1,0 +1,22 @@
+[project]
+name = "WBMgr"
+description = ""
+tags = []
+ai_context_files = [
+    "context/_about.md",
+    "changelog/_about.md",
+    "prd/_about.md",
+    "bugs/_about.md",
+    "todo/_about.md",
+    "prompts/_about.md",
+    "ideas/_about.md",
+]
+folder_order = [
+    "prd",
+    "todo",
+    "prompts",
+    "context",
+    "changelog",
+    "bugs",
+    "ideas",
+]

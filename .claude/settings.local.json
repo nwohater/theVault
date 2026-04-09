@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__slatevault__search_documents"
+      "mcp__slatevault__search_documents",
+      "mcp__slatevault__get_project_context",
+      "mcp__slatevault__write_document"
     ]
   }
 }

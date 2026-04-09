@@ -13,3 +13,9 @@ enabled = true
 port = 3742
 auto_stage_ai_writes = true
 read_only = false
+compress_context = true
+
+[ai]
+enabled = true
+endpoint_url = "http://localhost:11434"
+model = "llama3.1:8b"
